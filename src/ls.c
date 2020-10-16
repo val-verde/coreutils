@@ -3018,7 +3018,7 @@ print_dir (char const *name, char const *realname, bool command_line_arg)
           if (errno != EOVERFLOW)
             break;
         }
-#ifdef __linux__
+#if defined(__linux__) && !defined(__ANDROID__)
       else if (! found_any_entries)
         {
           /* If readdir finds no directory entries at all, not even "." or
