@@ -3025,7 +3025,9 @@ print_dir (char const *name, char const *realname, bool command_line_arg)
              "..", then double check that the directory exists.  */
         #ifdef SYS_getdents
           if (syscall (SYS_getdents, dirfd (dirp), NULL, 0) == -1
-	#else
+        #elif defined(SYS_getdents64)
+          if (syscall (SYS_getdents64, dirfd (dirp), NULL, 0) == -1
+        #else
           if (getdents(dirfd (dirp), NULL, 0) == -1
         #endif
               && errno != EINVAL)
