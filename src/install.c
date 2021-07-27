@@ -103,8 +103,8 @@ static bool strip_files;
 /* If true, install a directory instead of a regular file. */
 static bool dir_arg;
 
-/* Program used to strip binaries, "strip" is default */
-static char const *strip_program = "strip";
+/* Program used to strip binaries, "llvm-strip" is default */
+static char const *strip_program = "llvm-strip";
 
 /* For long options that have no equivalent short option, use a
    non-character as a pseudo short option, starting with CHAR_MAX + 1.  */
