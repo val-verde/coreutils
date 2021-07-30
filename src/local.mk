@@ -516,11 +516,12 @@ src/dircolors.h: src/dcgen src/dircolors.hin
 # insist that maintainers must build on hosts that support the widest
 # known ints (currently 128-bit).
 BUILT_SOURCES += $(top_srcdir)/src/primes.h
+MAKE_PRIME_LIST ?= $(AM_V_at)src/make-prime-list$(EXEEXT)
 $(top_srcdir)/src/primes.h:
 	$(AM_V_at)${MKDIR_P} src
 	$(MAKE) src/make-prime-list$(EXEEXT)
 	$(AM_V_GEN)rm -f $@ $@-t
-	$(AM_V_at)src/make-prime-list$(EXEEXT) 5000 > $@-t
+	$(MAKE_PRIME_LIST) 5000 > $@-t
 	$(AM_V_at)chmod a-w $@-t
 	$(AM_V_at)mv $@-t $@
 
